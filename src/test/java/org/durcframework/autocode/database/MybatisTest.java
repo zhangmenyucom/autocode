@@ -32,12 +32,12 @@ public class MybatisTest {
     /**
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Properties properties = new Properties();
         properties.setProperty("driver", "com.mysql.jdbc.Driver");
-        properties.setProperty("url", "jdbc:mysql://localhost:3306/auto_code");
+        properties.setProperty("url", "jdbc:mysql://139.196.79.91:3306/auto_code");
         properties.setProperty("username", "root");
-        properties.setProperty("password", "root");
+        properties.setProperty("password", "ilovemysql^^^");
         PooledDataSourceFactory pooledDataSourceFactory = new PooledDataSourceFactory();
         pooledDataSourceFactory.setProperties(properties);
         DataSource dataSource = pooledDataSourceFactory.getDataSource();
@@ -91,44 +91,4 @@ public class MybatisTest {
             }
         }
     }
-
 }
-
-/*
-     private Connection conn=null;
-	private SqlRunner sqlRunner;
-	
-	{
-		
-		try {
-			conn = sessionFactory.getConfiguration().getEnvironment().getDataSource().getConnection();
-			sqlRunner=new SqlRunner(conn);
-		} catch (SQLException e) {
-			logger.error(e);
-		}
-
-	}
-
-public void deletPerson(Map keysMap) {
-		BEGIN(); // Clears ThreadLocal variable
-		DELETE_FROM("PERSON");
-		WHERE("ID = #{id}");
-
-
-		TextSqlNode node =new TextSqlNode(SQL());	
-		DynamicSqlSource s=new DynamicSqlSource(sessionFactory.getConfiguration(),
-				node);	
-		//此外对于静态SQL，ibatis还提供了StaticSqlSource
-		BoundSql sql = s.getBoundSql(keysMap);
-		logger.debug(sql.getSql());		
-		
-
-		try {
-			sqlRunner.delete(sql.getSql(),keysMap.get("id"));
-			conn.commit();
-		} catch (Exception e) {
-			conn.rollback();
-			throw e;
-		}		
-}
- * */

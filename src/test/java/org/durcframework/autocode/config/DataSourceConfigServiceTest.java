@@ -38,10 +38,10 @@ public class DataSourceConfigServiceTest extends TestBase {
         DataSourceConfig config = configService.get(1);
         config.setBackUser("admin1");
         config.setDriverClass("com.mysql.jdbc.Driver1");
-        config.setJdbcUrl("jdbc:mysql://139.196.79.91:3306/auto_code1");
+        config.setJdbcUrl("jdbc:mysql://139.196.79.91:3306/auto_code");
         config.setName("代码生成库1");
-        config.setPassword("root1");
-        config.setUsername("root1");
+        config.setPassword("root");
+        config.setUsername("ilovemysql^^^");
         configService.update(config);
     }
 
