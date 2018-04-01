@@ -7,6 +7,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.durcframework.autocode.TestBase;
 import org.durcframework.autocode.entity.DataSourceConfig;
+import org.junit.Test;
 
 /**
  * <pre>
@@ -97,7 +98,7 @@ import org.durcframework.autocode.entity.DataSourceConfig;
  *
  * }</pre>
  */
-public class FileContextGeneratorTest extends TestBase {
+public class FileContextGeneratorTest {
     // 模板
     static String template = "package ${context.packageName}.entity;\r\n\r\n" +
 
@@ -121,10 +122,8 @@ public class FileContextGeneratorTest extends TestBase {
         dataSourceConfig.setPassword("root");
     }
 
-
     private void doGenerator(SQLContext sqlContext) {
         Velocity.init();
-
         VelocityContext context = new VelocityContext();
 
         context.put("context", sqlContext);
