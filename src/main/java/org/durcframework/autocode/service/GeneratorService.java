@@ -19,6 +19,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Administrator
+ */
 @Service
 public class GeneratorService {
     @Autowired
@@ -40,26 +43,19 @@ public class GeneratorService {
 
         List<SQLContext> contextList = service.getColumnSelector(dataSourceConfig).buildSQLContextList(generatorParam.getTableNames());
 
-        List<CodeFile> codeFileList = new ArrayList<CodeFile>();
+        List<CodeFile> codeFileList = new ArrayList<>();
 
         for (SQLContext sqlContext : contextList) {
             setPackageName(sqlContext, generatorParam.getPackageName());
-
             String packageName = sqlContext.getJavaBeanNameLF();
-
             for (int tcId : generatorParam.getTcIds()) {
-
                 TemplateConfig template = templateConfigService.get(tcId);
-
                 String fileName = doGenerator(sqlContext, template.getFileName());
                 String content = doGenerator(sqlContext, template.getContent());
-
                 CodeFile codeFile = new CodeFile(packageName, fileName, content);
-
                 codeFileList.add(codeFile);
             }
         }
-
         return codeFileList;
     }
 

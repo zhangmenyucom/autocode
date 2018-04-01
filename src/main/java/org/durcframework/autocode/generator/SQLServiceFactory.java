@@ -7,18 +7,19 @@ import org.durcframework.core.DurcException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Administrator
+ */
 public class SQLServiceFactory {
 
-    private static Map<String, SQLService> SERVICE_MAP = new HashMap<String, SQLService>(20);
+    private static Map<String, SQLService> SERVICE_MAP = new HashMap<>(20);
 
     public static SQLService build(DataBaseConfig dataBaseConfig) {
+
         String driverClass = dataBaseConfig.getDriverClass();
         SQLService service = SERVICE_MAP.get(driverClass);
-
         if (service == null) {
-
             service = findSqlService(driverClass);
-
             if (service != null) {
                 SERVICE_MAP.put(driverClass, service);
             } else {

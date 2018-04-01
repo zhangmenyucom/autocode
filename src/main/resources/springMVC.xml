@@ -23,9 +23,7 @@
     <!-- 导入durcframework配置 -->
     <import resource="classpath*:/durcframework_spring/*.xml"/>
 
-    <!-- 扫描controller
-        use-default-filters="false"只扫描@Controller
-    -->
+    <!-- 扫描controller  use-default-filters="false"只扫描@Controller -->
     <context:component-scan base-package="org.durcframework.autocode.controller" use-default-filters="false">
         <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>

@@ -5,6 +5,9 @@ import org.durcframework.autocode.generator.DataBaseConfig;
 import org.durcframework.autocode.generator.SQLService;
 import org.durcframework.autocode.generator.TableSelector;
 
+/**
+ * @author Administrator
+ */
 public class MySqlService implements SQLService {
 
     @Override

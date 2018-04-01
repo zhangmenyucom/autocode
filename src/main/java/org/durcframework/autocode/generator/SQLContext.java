@@ -1,5 +1,6 @@
 package org.durcframework.autocode.generator;
 
+import lombok.Data;
 import org.durcframework.autocode.util.FieldUtil;
 
 import java.util.List;
@@ -7,10 +8,14 @@ import java.util.List;
 /**
  * SQL上下文,这里可以取到表,字段信息<br>
  * 最终会把SQL上下文信息放到velocity中
+ * @author Administrator
  */
+@Data
 public class SQLContext {
-    private TableDefinition tableDefinition; // 表结构定义
-    private String packageName; // 包名
+    /** 表结构定义**/
+    private TableDefinition tableDefinition;
+    /**包名**/
+    private String packageName;
 
     public SQLContext(TableDefinition tableDefinition) {
         this.tableDefinition = tableDefinition;
@@ -61,26 +66,6 @@ public class SQLContext {
             return this.tableDefinition.getPkColumn().getMybatisJdbcType();
         }
         return "";
-    }
-
-    public TableDefinition getTableDefinition() {
-        return tableDefinition;
-    }
-
-    public void setTableDefinition(TableDefinition tableDefinition) {
-        this.tableDefinition = tableDefinition;
-    }
-
-    public List<ColumnDefinition> getColumnDefinitionList() {
-        return tableDefinition.getColumnDefinitions();
-    }
-
-    public String getPackageName() {
-        return packageName;
-    }
-
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
     }
 
 }

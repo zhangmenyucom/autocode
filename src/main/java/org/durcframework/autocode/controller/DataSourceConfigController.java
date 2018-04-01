@@ -16,13 +16,15 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author Administrator
+ */
 @Controller
 public class DataSourceConfigController extends CrudController<DataSourceConfig, DataSourceConfigService> {
 
     @ResponseBody
     @RequestMapping("/addDataSource.do")
-    public
-    MessageResult addDataSource(DataSourceConfig dataSourceConfig) {
+    public MessageResult addDataSource(DataSourceConfig dataSourceConfig) {
         BackUser user = AutoCodeContext.getInstance().getUser();
         dataSourceConfig.setBackUser(user.getUsername());
         return this.save(dataSourceConfig);
@@ -30,8 +32,7 @@ public class DataSourceConfigController extends CrudController<DataSourceConfig,
 
     @ResponseBody
     @RequestMapping("/listDataSource.do")
-    public
-    GridResult listDataSource(DatasourceConfigSch searchEntity) {
+    public GridResult listDataSource(DatasourceConfigSch searchEntity) {
         BackUser user = AutoCodeContext.getInstance().getUser();
         ExpressionQuery query = this.buildExpressionQuery(searchEntity);
         query.add(new ValueExpression("back_user", user.getUsername()));
@@ -40,22 +41,19 @@ public class DataSourceConfigController extends CrudController<DataSourceConfig,
 
     @ResponseBody
     @RequestMapping("/updateDataSource.do")
-    public
-    MessageResult updateDataSource(DataSourceConfig dataSourceConfig) {
+    public MessageResult updateDataSource(DataSourceConfig dataSourceConfig) {
         return this.update(dataSourceConfig);
     }
 
     @ResponseBody
     @RequestMapping("/delDataSource.do")
-    public
-    MessageResult delDataSource(DataSourceConfig dataSourceConfig) {
+    public MessageResult delDataSource(DataSourceConfig dataSourceConfig) {
         return this.delete(dataSourceConfig);
     }
 
     @ResponseBody
     @RequestMapping("/connectionTest.do")
-    public
-    MessageResult connectionTest(DataSourceConfig dataSourceConfig) {
+    public MessageResult connectionTest(DataSourceConfig dataSourceConfig) {
         String connectInfo = DBConnect.testConnection(dataSourceConfig);
         if (StringUtils.hasText(connectInfo)) {
             return error(connectInfo);

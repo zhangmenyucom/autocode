@@ -42,7 +42,7 @@ public abstract class ColumnSelector {
      * @return
      */
     public List<SQLContext> buildSQLContextList(List<String> tableNames) {
-        List<SQLContext> contexts = new ArrayList<SQLContext>();
+        List<SQLContext> contexts = new ArrayList<>();
 
         for (String tableName : tableNames) {
             List<Map<String, Object>> resultList = SqlHelper.runSql(this.getDataBaseConfig(), getTableDetailSQL(tableName));
